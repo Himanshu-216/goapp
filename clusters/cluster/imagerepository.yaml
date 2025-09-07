@@ -1,0 +1,8 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: goapp
+  namespace: flux-system
+spec:
+  image: himanshu162pnt723/goapp
+  interval: 1m

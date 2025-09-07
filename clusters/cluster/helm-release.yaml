@@ -1,0 +1,22 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: goapp
+  namespace: default
+spec:
+  interval: 1m
+  chart:
+    spec:
+      chart: ./charts
+      sourceRef:
+        kind: GitRepository
+        name: goapi-repo
+        namespace: flux-system
+  values:
+    replicaCount: 2
+    image:
+      repository: himanshu162pnt723/go-hello
+      tag: latest
+    service:
+      type: ClusterIP
+      port: 8080

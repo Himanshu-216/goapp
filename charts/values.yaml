@@ -1,0 +1,12 @@
+replicaCount: 2
+
+image:
+  repository: himanshu162pnt723/goapp
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8080
+
+resources: {}

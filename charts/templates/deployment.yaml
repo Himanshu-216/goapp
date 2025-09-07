@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "goapp.fullname" . }}
+  labels:
+    app: {{ include "goapp.name" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "goapp.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "goapp.name" . }}
+    spec:
+      containers:
+        - name: {{ include "goapp.name" . }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.service.port }}
