@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m
-  path: ./charts
+  path: ./clusters/cluster        # ← point to the folder with your HelmRelease
   prune: true
   sourceRef:
     kind: GitRepository

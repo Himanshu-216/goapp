@@ -15,7 +15,7 @@ spec:
   values:
     replicaCount: 2
     image:
-      repository: himanshu162pnt723/go-hello
+      repository: himanshu162pnt723/goapp
       tag: latest
     service:
       type: ClusterIP

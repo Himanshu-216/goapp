@@ -1,0 +1,17 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: goapp
+  namespace: flux-system
+spec:
+  checkout:
+    gitRepositoryRef:
+      name: flux-system
+  interval: 1m
+  commit:
+    authorName: flux-bot
+    authorEmail: flux-bot@example.com
+    messageTemplate: "Update goapp image to {{ .AutomationRun.metadata.name }}"
+  update:
+    strategy: Setters
+    path: ./clusters/cluster
