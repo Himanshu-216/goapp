@@ -16,7 +16,7 @@ spec:
     replicaCount: 2
     image:
       repository: himanshu162pnt723/goapp
-      tag: latest
+      tag: ""       
     service:
       type: NodePort
       port: 8080
