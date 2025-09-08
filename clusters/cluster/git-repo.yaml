@@ -1,7 +1,7 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
-  name: goapi-repo
+  name: goapp
   namespace: flux-system
 spec:
   interval: 1m
