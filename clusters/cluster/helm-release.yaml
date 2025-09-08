@@ -10,7 +10,7 @@ spec:
       chart: ./charts
       sourceRef:
         kind: GitRepository
-        name: goapi-repo
+        name: goapp
         namespace: flux-system
   values:
     replicaCount: 2
@@ -18,5 +18,5 @@ spec:
       repository: himanshu162pnt723/goapp
       tag: latest
     service:
-      type: ClusterIP
+      type: LoadBalancer
       port: 8080
