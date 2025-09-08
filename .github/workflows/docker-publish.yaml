@@ -24,10 +24,14 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
+      - name: Generate short timestamp
+        id: timestamp
+        run: echo "SHORT_TAG=$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
+
       - name: Build and Push Docker image
         uses: docker/build-push-action@v4
         with:
           context: .
           push: true
           tags: |
-            ${{ env.IMAGE_NAME }}:${{ github.sha }}   # versioned tag only
+            ${{ env.IMAGE_NAME }}:${{ env.SHORT_TAG }}
