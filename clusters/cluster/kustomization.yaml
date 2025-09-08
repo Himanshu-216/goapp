@@ -1,13 +1,8 @@
-apiVersion: kustomize.toolkit.fluxcd.io/v1
+apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-metadata:
-  name: goapp
-  namespace: flux-system
-spec:
-  interval: 1m
-  path: ./clusters/cluster        # ← point to the folder with your HelmRelease
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  targetNamespace: default
+resources:
+  - git-repo.yaml
+  - helm-release.yaml
+  - imagerepository.yaml
+  - imagepolicy.yaml
+  - imageupdateautomation.yaml
