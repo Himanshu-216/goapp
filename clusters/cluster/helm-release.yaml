@@ -18,5 +18,5 @@ spec:
       repository: himanshu162pnt723/goapp
       tag: latest
     service:
-      type: LoadBalancer
+      type: NodePort
       port: 8080
