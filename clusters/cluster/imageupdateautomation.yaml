@@ -4,14 +4,19 @@ metadata:
   name: goapp
   namespace: flux-system
 spec:
-  checkout:
-    gitRepositoryRef:
-      name: flux-system
   interval: 1m
-  commit:
-    authorName: flux-bot
-    authorEmail: flux-bot@example.com
-    messageTemplate: "Update goapp image to {{ .AutomationRun.metadata.name }}"
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
   update:
     strategy: Setters
-    path: ./clusters/cluster
+  git:
+    checkout:
+      ref:
+        branch: master
+    commit:
+      author:
+        name: fluxcdbot
+        email: flux@example.com
+    push:
+      branch: master
