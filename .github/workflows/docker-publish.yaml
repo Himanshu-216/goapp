@@ -11,6 +11,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    # ✅ Skip job if commit author is fluxcdbot
+    if: github.actor != 'fluxcdbot'
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
