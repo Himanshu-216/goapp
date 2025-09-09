@@ -8,4 +8,4 @@ spec:
     name: goapp
   policy:
     alphabetical:
-      order: asc  # or "desc" for newest
+      order: desc  # or "desc" for newest
