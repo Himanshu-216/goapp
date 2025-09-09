@@ -11,27 +11,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    # ✅ Skip job if commit author is fluxcdbot
-    if: github.actor != 'fluxcdbot'
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Log in to DockerHub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-
-      - name: Generate short timestamp
-        id: timestamp
-        run: echo "SHORT_TAG=$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
-
-      - name: Get Commit Author and Actor
+      - name: Get Commit Author
         id: commit
         run: |
           AUTHOR=$(git log -1 --pretty='%an')
@@ -39,8 +23,30 @@ jobs:
           echo "Commit Author: $AUTHOR"
           echo "GitHub Actor: $GITHUB_ACTOR"
 
+      - name: Stop if commit author is fluxcdbot
+        if: env.AUTHOR == 'fluxcdbot'
+        run: |
+          echo "Commit was made by fluxcdbot, skipping build & push."
+          exit 0
+
+      - name: Log in to DockerHub
+        if: env.AUTHOR != 'fluxcdbot'
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Set up Docker Buildx
+        if: env.AUTHOR != 'fluxcdbot'
+        uses: docker/setup-buildx-action@v2
+
+      - name: Generate short timestamp
+        if: env.AUTHOR != 'fluxcdbot'
+        id: timestamp
+        run: echo "SHORT_TAG=$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
 
       - name: Build and Push Docker image
+        if: env.AUTHOR != 'fluxcdbot'
         uses: docker/build-push-action@v4
         with:
           context: .
