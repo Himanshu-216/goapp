@@ -9,7 +9,7 @@ import (
 func handler(w http.ResponseWriter, r *http.Request) {
 	serviceName := os.Getenv("SERVICE_NAME") // read from env variable
 	if serviceName == "" {
-		serviceName = "local"
+		serviceName = "Flux"
 	}
 	fmt.Fprintf(w, "Hello from %s!", serviceName)
 }
