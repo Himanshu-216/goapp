@@ -6,6 +6,10 @@ metadata:
 spec:
   imageRepositoryRef:
     name: goapp
+  filterTags:
+    # Match only tags that are pure 14-digit numbers like 20250909122248
+    pattern: '^(?P<ts>[0-9]{14})$'
+    extract: '$ts'
   policy:
-    alphabetical:
-      order: desc  # or "desc" for newest
+    numerical:
+      order: asc   # pick the latest timestamp (biggest number)
