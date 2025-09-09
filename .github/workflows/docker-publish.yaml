@@ -31,6 +31,15 @@ jobs:
         id: timestamp
         run: echo "SHORT_TAG=$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
 
+      - name: Get Commit Author and Actor
+        id: commit
+        run: |
+          AUTHOR=$(git log -1 --pretty='%an')
+          echo "AUTHOR=$AUTHOR" >> $GITHUB_ENV
+          echo "Commit Author: $AUTHOR"
+          echo "GitHub Actor: $GITHUB_ACTOR"
+
+
       - name: Build and Push Docker image
         uses: docker/build-push-action@v4
         with:
