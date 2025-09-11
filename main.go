@@ -11,7 +11,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	if serviceName == "" {
 		serviceName = "Flux"
 	}
-	fmt.Fprintf(w, "Hello from %s!", serviceName)
+	fmt.Fprintf(w, "Hello and Welcome from %s!", serviceName)
 }
 
 func main() {
