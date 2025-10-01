@@ -18,5 +18,8 @@ spec:
       repository: himanshu162pnt723/goapp
       tag: "20251001084806" # {"$imagepolicy": "flux-system:goapp:tag"}
     service:
-      type: NodePort
+      type: ClusterIP   # <-- changed from NodePort
       port: 8080
+    ingress:
+      enabled: true
+      host: goapp.local   # <-- change to your domain or test host
