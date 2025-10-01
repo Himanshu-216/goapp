@@ -9,7 +9,7 @@ import (
 func handler(w http.ResponseWriter, r *http.Request) {
 	serviceName := os.Getenv("SERVICE_NAME") // read from env variable
 	if serviceName == "" {
-		serviceName = "Kubernetes Cluster aws"
+		serviceName = "Kubernetes Cluster AWS"
 	}
 	fmt.Fprintf(w, "Hello and Welcome from %s!", serviceName)
 }
