@@ -16,7 +16,7 @@ spec:
     replicaCount: 1
     image:
       repository: himanshu162pnt723/goapp
-      tag: "20251001135829" # {"$imagepolicy": "flux-system:goapp:tag"}
+      tag: "20251001141850" # {"$imagepolicy": "flux-system:goapp:tag"}
     service:
       type: ClusterIP # <-- changed from NodePort
       port: 8080
