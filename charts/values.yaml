@@ -6,13 +6,8 @@ image:
   pullPolicy: IfNotPresent
 
 service:
-  type: ClusterIP   # <--- changed from NodePort
+  type: NodePort  
   port: 8080
-  targetPort: 8080
-
-ingress:
-  enabled: true
-  host: goapp.local
 
 
 resources: {}

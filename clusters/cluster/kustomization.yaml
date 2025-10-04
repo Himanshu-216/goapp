@@ -6,6 +6,4 @@ resources:
   - imagerepository.yaml
   - imagepolicy.yaml
   - imageupdateautomation.yaml
-  - helm-repos.yaml
-  - ingress-nginx.yaml
   
