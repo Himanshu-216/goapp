@@ -10,13 +10,15 @@ spec:
     name: flux-system
   update:
     strategy: Setters
-  git:
-    checkout:
-      ref:
-        branch: master
     commit:
       author:
         name: fluxcdbot
         email: flux@example.com
+      messageTemplate: |
+        Update {{ .AutomationObject }} to {{ .Updated.Images }}
+  git:
+    checkout:
+      ref:
+        branch: master
     push:
       branch: master
