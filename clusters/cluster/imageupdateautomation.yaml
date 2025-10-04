@@ -21,4 +21,4 @@ spec:
         name: fluxcdbot
         email: flux@example.com
       messageTemplate: |
-        chore(images): update {{ .Changed.Images }}
+        chore(images): bump {{ (index .Changed 0).Name }} to {{ (index .Changed 0).Tag }}
