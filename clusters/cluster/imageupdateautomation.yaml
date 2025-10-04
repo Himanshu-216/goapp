@@ -14,11 +14,13 @@ spec:
       author:
         name: fluxcdbot
         email: flux@example.com
-      messageTemplate: |
-        Update {{ .AutomationObject }} to {{ .Updated.Images }}
+      
   git:
     checkout:
       ref:
         branch: master
     push:
       branch: master
+    commit:
+      messageTemplate: | 
+        Update {{ .AutomationObject }} to {{ .Updated.Images }}
