@@ -4,6 +4,9 @@ metadata:
   name: goapp
   namespace: dev
 spec:
+  targetNamespace: dev
+  install:
+    createNamespace: true
   interval: 1m
   chart:
     spec:
