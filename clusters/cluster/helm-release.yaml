@@ -17,6 +17,6 @@ spec:
     image:
       repository: himanshu162pnt723/goapp
       tag: "20251004015445" # {"$imagepolicy": "flux-system:goapp:tag"}
-    # service:
-    #   type: ClusterIP # <-- changed from NodePort
-    #   port: 8080
+    service:
+      type: NodePort 
+      port: 8080
