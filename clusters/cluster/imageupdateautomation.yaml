@@ -1,4 +1,4 @@
-apiVersion: image.toolkit.fluxcd.io/v1beta2
+apiVersion: image.toolkit.fluxcd.io/v1
 kind: ImageUpdateAutomation
 metadata:
   name: goapp
@@ -10,11 +10,6 @@ spec:
     name: flux-system
   update:
     strategy: Setters
-    commit:
-      author:
-        name: fluxcdbot
-        email: flux@example.com
-      
   git:
     checkout:
       ref:
@@ -22,5 +17,8 @@ spec:
     push:
       branch: master
     commit:
-      messageTemplate: | 
-        Update {{ .AutomationObject }} to {{ .Updated.Images }}
+      author:
+        name: fluxcdbot
+        email: flux@example.com
+      messageTemplate: |
+        chore(images): update {{ .Updated.Images }}
