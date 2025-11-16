@@ -6,4 +6,5 @@ resources:
   - imagerepository.yaml
   - imagepolicy.yaml
   - imageupdateautomation.yaml
+  - dependencies.yaml
   
