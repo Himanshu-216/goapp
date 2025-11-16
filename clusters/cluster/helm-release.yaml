@@ -16,6 +16,6 @@ spec:
     replicaCount: 1
     image:
       repository: himanshu162pnt723/goapp
-      tag: "20251116054055" # {"$imagepolicy": "flux-system:goapp:tag"}
+      tag: "20251116055916" # {"$imagepolicy": "flux-system:goapp:tag"}
     service:
       type: ClusterPort
