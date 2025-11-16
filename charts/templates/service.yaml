@@ -9,5 +9,5 @@ spec:
   selector:
     app: {{ include "goapp.name" . }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: {{ .Values.service.port }}
+    - port: 80
+      
