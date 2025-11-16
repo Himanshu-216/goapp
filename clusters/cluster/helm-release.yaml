@@ -16,11 +16,11 @@ spec:
     replicaCount: 1
     image:
       repository: himanshu162pnt723/goapp
-      tag: "20251116060523" # {"$imagepolicy": "flux-system:goapp:tag"}
+      tag: "20251116100940" # {"$imagepolicy": "flux-system:goapp:tag"}
     service:
       type: ClusterIP
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: dev  
+  name: dev
