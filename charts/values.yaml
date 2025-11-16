@@ -6,7 +6,7 @@ image:
   pullPolicy: IfNotPresent
 
 service:
-  type: ClusterPort  
+  type: ClusterIP  
 
 
 resources: {}

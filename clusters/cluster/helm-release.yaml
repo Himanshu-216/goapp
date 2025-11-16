@@ -18,4 +18,9 @@ spec:
       repository: himanshu162pnt723/goapp
       tag: "20251116060523" # {"$imagepolicy": "flux-system:goapp:tag"}
     service:
-      type: ClusterPort
+      type: ClusterIP
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev  
