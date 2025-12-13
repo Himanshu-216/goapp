@@ -7,7 +7,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: grafana       # chart name inside repo
+      chart: grafana
       version: "*"
       sourceRef:
         kind: HelmRepository
@@ -16,3 +16,7 @@ spec:
   values:
     adminUser: admin
     adminPassword: admin
+
+    service:
+      type: NodePort
+      nodePort: 32000 
