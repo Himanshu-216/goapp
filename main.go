@@ -7,7 +7,7 @@ import (
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	serviceName := os.Getenv("SERVICE_NAME") // read from env variable
+	serviceName := os.Getenv("SERVICE_NAME")
 	if serviceName == "" {
 		serviceName = "Kubernetes Cluster AWS"
 	}
@@ -15,12 +15,20 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	http.HandleFunc("/", handler)
+	mux := http.NewServeMux()
+
+	// Root route ONLY
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path != "/" {
+			http.NotFound(w, r)
+			return
+		}
+		handler(w, r)
+	})
 
 	port := ":8080"
 	fmt.Println("Server running at", port)
-	err := http.ListenAndServe(port, nil)
-	if err != nil {
+	if err := http.ListenAndServe(port, mux); err != nil {
 		fmt.Println("Error starting server:", err)
 	}
 }
